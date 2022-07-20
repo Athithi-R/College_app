@@ -36,6 +36,7 @@ function speak(){
         take_snapshot();
         speak_data = "Taking your selfie in 10 seconds";
         var utterThis = new SpeechSynthesisUtterance(speak_data);
+        save();
         
     }, 5000);
 
@@ -45,14 +46,14 @@ function speak(){
         take_snapshot();
         speak_data = "Taking your second selfie in 15 seconds";
         var utterThis = new SpeechSynthesisUtterance(speak_data);
-        
+        save();
     }, 10000);
 
     setTimeout(function()
     {
         img_id = "selfie3";
         take_snapshot();
-        
+        save();
     }, 15000);
     
 }
@@ -87,5 +88,13 @@ function take_snapshot()
         }
         
     });
+}
+
+function save()
+{
+    link = document.getElementById("link");
+    image = document.getElementById("selfie_image").src;
+    link.href = image;
+    link.click();
 }
 
